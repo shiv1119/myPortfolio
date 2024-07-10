@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import AuthorProfile
+from .serializers import AuthorProfileSerializer
 
-# Create your views here.
-
-def index(request):
-
-    return render(request, "myapp/index.html")
+class AuthorProfileList(generics.ListAPIView):
+    queryset = AuthorProfile.objects.all()
+    serializer_class = AuthorProfileSerializer
